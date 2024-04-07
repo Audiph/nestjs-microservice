@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
         - name: orders
-        image: audiph/ordering-app_orders # Docker image built
-        ports:
-          - containerPort: 3000
-        env:
-          - name: PORT
-            value: '3000'
-          - name: RABBIT_MQ_BILLING_QUEUE
-            value: billing
-          - name: RABBIT_MQ_AUTH_QUEUE
-            value: auth
+          image: audiph/ordering-app_orders # Docker image built
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: '3000'
+            - name: RABBIT_MQ_BILLING_QUEUE
+              value: billing
+            - name: RABBIT_MQ_AUTH_QUEUE
+              value: auth
