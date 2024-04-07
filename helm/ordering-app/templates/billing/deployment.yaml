@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: billing
+spec:
+  replicas: 3 # number of instances of our app running
+  selector: # make sure our deployment deploys correct application
+    matchLabels:
+      app: billing
+  template: # actual information about the app run
+    metadata:
+      labels:
+        app: billing
+    spec:
+      containers:
+        - name: billing
+        image: audiph/ordering-app_billing # Docker image built
+        env:
+          - name: RABBIT_MQ_BILLING_QUEUE
+            value: billing
+          - name: RABBIT_MQ_AUTH_QUEUE
+            value: auth
