@@ -1,0 +1,27 @@
+# ingress that will automatically provision the load balancer for our application
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ordering-ingress
+  annotations: # pick up on ingress resource and create an associated load balancer for us
+    alb.ingress.kubernetes.io/scheme: internet-facing # external traffic based ingress
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /orders
+            pathType: Prefix
+            backend:
+              service:
+                name: orders
+                port:
+                  number: 3000
+          - path: /auth
+            pathType: Prefix
+            backend:
+              service:
+                name: auth
+                port:
+                  number: 3001
