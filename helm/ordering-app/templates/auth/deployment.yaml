@@ -28,3 +28,7 @@ spec:
               value: '3600'
             - name: JWT_SECRET
               value: 746fc30ec833fab7ce6164c215e14c0adbb6bb386f52d34c1f36cfd979758ef9
+            - name: MONGODB_URI
+              value: mongodb://root:password123@ordering-app-mongodb-headless:27017/
+            - name: RABBIT_MQ_URI
+              value: amqp://user1:password123@ordering-app-rabbitmq:5672
